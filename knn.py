@@ -1,17 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Dec 18 20:06:10 2022
-
-@author: SerkanSavas
-"""
-
 import pandas as pd
 covid=pd.read_csv('qt_dataset.csv')
 covid.head()
 
 covid.info()
 covid.describe()
-
 
 import numpy as np
 import seaborn as sns
@@ -33,8 +25,7 @@ plt.show()
 #Veri kümesinde sağlıklı ve hasta olan kayıtların yüzdelik olarak listelenmesi
 round(covid.Result.value_counts()*100/len(covid), 2)
 
-
-#Veri ön-işleme
+#Veri ön işleme
 X=covid[['Oxygen','PulseRate', 'Temperature']].values
 y = covid['Result'].values	
 from sklearn.model_selection import train_test_split
@@ -73,7 +64,7 @@ plt.show()
 
 # K komşuları ile bir knn sınıflandırıcısı kurulması
 knn = KNeighborsClassifier(n_neighbors=5)
-#modelin uygulanması
+
 knn.fit(X_train,y_train)
 
 knn.score(X_test,y_test)
